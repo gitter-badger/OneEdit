@@ -1,0 +1,46 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+---
+name: 1S
+scopeName: source.1s
+fileTypes: [1s, os]
+uuid: 20899025-07ca-41b4-a7e2-c124b1474c10
+
+patterns:
+- comment: 1S embedded functions
+  match: (?i:[^\.](Сообщить|ЗначениеЗаполнено|ЗаполнитьЗначенияСвойств|Лев|Прав|Сред|Найти|ТекущаяДата))\s*\(
+  captures:
+    '1': {name: keyword.1s}
+
+- comment: 1S operators
+  match: (?i)\b(Перем|Новый|ВызватьИсключение|Экспорт|Не|И|Или)\b
+  captures:
+    '1': {name: keyword.1s}
+
+- comment: control keywords
+  name: keyword.control.1s
+  match: (?i:\b(Если|Тогда|Иначе|ИначеЕсли|КонецЕсли|Пока|Цикл|КонецЦикла|Для|По|каждого|Из|Знач|Возврат)\b)
+
+- comment: 1S primitives
+  name: support.type.1s
+  match: (?i:\s*\b(Истина|Ложь|Число|Строка|Дата|Неопределено|Знач)\b\s*)
+
+- comment: String constant
+  name: string.quoted.other.1s
+  match: \"(.*?)\"
+
+- comment: Comment
+  name: comment.line.double-slash.1s
+  match: \/\/.*
+
+- comment: Method definitions
+  name: support.function.1s
+  match: ((?i:Функция|Процедура))\s*([a-zA-Zа-яА-Я_]\w*)\s*(\()([^)]*)(\))
+  captures:
+    '1': {name: support.function.1s}
+    '2': {name: entity.name.function.1s}
+    '4': {name: variable.parameter.1s}
+
+- comment: Method endings
+  name: support.function.1s
+  match: (?i:КонецФункции|КонецПроцедуры)
+...
