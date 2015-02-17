@@ -47,5 +47,9 @@ patterns:
 - comment: Multiline string
   name: string.other.1s
   begin: \"
-  end: \"  
+  end: \" 
+
+- comment: Compilation directives
+  name: support.function.1s
+  match: (?i:&(НаКлиенте|НаСервере|НаСервереБезКонтекста|НаКлиентеНаСервереБезКонтекста|НаКлиентеНаСервере))
 ...
